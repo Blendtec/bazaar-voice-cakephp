@@ -7,7 +7,7 @@ App::uses('BazaarVoiceAppController', 'BazaarVoice.Controller');
 class ContainersController extends BazaarVoiceAppController {
 
 	public function beforeFilter() {
-		$this->Auth->allow('container');
+		$this->Auth->allow();
 	}
 
 	public function container() {

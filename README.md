@@ -40,7 +40,7 @@ An element to load the script for you is provided. Use it like so:
 
 
 Product Page Initialization
----------------------
+--------------------------------
 
 A product_top element has been provided to load the script and initialize BazaarVoice with the product id. Make sure that you pass in a `$productId` that matches the External Product Id in your Bazaar Voice XML Feed. Use it like so:
 
@@ -50,3 +50,27 @@ A product_top element has been provided to load the script and initialize Bazaar
 			'productId' => $product['Product']['external_product_id']
 		)
 	);
+
+Product Review SEO Integration
+--------------------------------------
+
+BazaarVoice requires a div with id `BVRRContainer` to display reviews on your product page. If you don't want SEO integration this is an empty tag. e.g.
+
+    <div id="BVRRContainer"></div>
+
+But for SEO integration, the SEO integration code goes in that tag. `review_seo_container` element has been provided with that code already set up inside of the `<div id="BVRRContainer"></div>`. Please provide these **required** configuration values:
+
+- `deployment_zone_id` - This is provided for you by Bazaar Voice
+- `cloud_key` - This is provided for you by Bazaar Voice
+- `staging` - Whether to use the Production or Staging environments. This should be the same algorithm as switching the URL above.
+
+Just call it with the `$productId` same as above e.g.
+
+    echo $this->element(
+        'BazaarVoice.review_seo_container',
+        array(
+            'productId' => $product['Product']['external_product_id']
+        )
+    );
+
+NOTE: This feature requires the PHP bvseosdk.php provided by BazaarVoice at [https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php](https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php). This file is included in the *Vendor* directory. If this file is out of date please report an issue to us on Github, fix it yourself and do a pull request.
