@@ -30,3 +30,23 @@ You will also need to specific a route for the container (The plugin will pick u
 		)
 	);
 
+
+Load Script
+--------------------
+
+An element to load the script for you is provided. Use it like so:
+
+    echo $this->element('BazaarVoice.load_script');
+
+
+Product Page Initialization
+---------------------
+
+A product_top element has been provided to load the script and initialize BazaarVoice with the product id. Make sure that you pass in a `$productId` that matches the External Product Id in your Bazaar Voice XML Feed. Use it like so:
+
+    echo $this->element(
+		'BazaarVoice.product_top',
+		array(
+			'productId' => $product['Product']['external_product_id']
+		)
+	);
