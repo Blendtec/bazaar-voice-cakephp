@@ -73,4 +73,102 @@ Just call it with the `$productId` same as above e.g.
         )
     );
 
+Product Feed Generation
+--------------------------------
+
+The Bazaarvoice product feed constsists of your products and their associated categories. It facilities the mapping of reviews and dimensions toe the appropriate products and categories.
+
+Controller
+
+    public function admin_bazaar_feed() {
+        if (!isset($this->request->params['ext']) || $this->request->params['ext'] !== 'xml') {
+            throw new BadRequestException();
+        }
+        $this->set($this->Product->bazaarFeed('blendtec.com'));
+        $this->render('BazaarVoice.ProductFeeds/xml/feed');
+    }
+
+Model
+
+    public function bazaar_feed() {
+        $feed = array (
+                'Feed' => array (
+                    'name' => 'blendtec',
+                    'extracted' => $date->format('Y-m-d\TH:i:s.m'),
+                    'incremental' => 'false'
+                )
+            );
+        $brands = array (
+            (int)0 => array (
+                'Brand' => array (
+                    'external_id' => 'blendtec',
+                    'name' => 'Blendtec'
+                )
+            )
+        );
+        $products = array (
+            (int)0 => array (
+                'Product' => array (
+                    'external_id' => '123456',
+                    'name' => 'Total Blender',
+                    'description' => 'Blender Description',
+                    'category_external_id' => 'blenders',
+                    'page_url' => 'http://blendtec.com',
+                    'image_url' => 'http://blendtec.com/blenders.jpg',
+                    'upc' => '000000000000',
+                    'model_number' => '123456',
+                )
+            ),
+            (int)1 => array (
+                'Product' => array (
+                    'external_id' => '123457',
+                    'name' => 'Twister',
+                    'description' => 'Jar Description',
+                    'category_external_id' => 'jars',
+                    'page_url' => 'http://blendtec.com',
+                    'image_url' => 'http://blendtec.com/jars.jpg',
+                    'upc' => '000000000000',
+                    'model_number' => '123457',
+                )
+            ),
+            (int)2 => array (
+                'Product' => array (
+                    'external_id' => '123458',
+                    'name' => 'Kitchen Mill',
+                    'description' => 'Mill Description',
+                    'category_external_id' => 'mixers',
+                    'page_url' => 'http://blendtec.com',
+                    'image_url' => 'http://blendtec.com/mixers.jpg',
+                    'upc' => '000000000000',
+                    'model_number' => '123457',
+                )
+            ),
+        );
+        $categories = array (
+            (int)0 => array (
+                'Category' => array (
+                    'external_id' => 'blenders',
+                    'name' => 'Blenders',
+                    'page_url' => 'http://blendtec.com/blenders',
+                )
+            ),
+            (int)1 => array (
+                'Category' => array (
+                    'external_id' => 'jars',
+                    'name' => 'Jars',
+                    'page_url' => 'http://blendtec.com/jars',
+                )
+            ),
+            (int)2 => array (
+                'Category' => array (
+                    'external_id' => 'mills',
+                    'name' => 'Mills',
+                    'page_url' => 'http://blendtec.com/mills',
+                )
+            ),
+        );
+        return compact('feed', 'brands', 'products', 'categories');
+    }
+
+
 NOTE: This feature requires the PHP bvseosdk.php provided by BazaarVoice at [https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php](https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php). This file is included in the *Vendor* directory. If this file is out of date please report an issue to us on Github, fix it yourself and do a pull request.
