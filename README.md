@@ -51,6 +51,7 @@ A product_top element has been provided to load the script and initialize Bazaar
 		)
 	);
 
+
 Product Review SEO Integration
 --------------------------------------
 
@@ -73,10 +74,23 @@ Just call it with the `$productId` same as above e.g.
         )
     );
 
+Inline Ratings Integration
+--------------------------------
+A product_category element has been provided to load the script and add ratings to products within a category page. You can use this by passing in an array of product IDs that match the IDs for products with BazaarVoice. 
+
+Once you have an array of product IDs you can pass it to the plugin element like so:
+
+    echo $this->element(
+        'BazaarVoice.product_category', 
+        array(
+            'productArray' => $productArray
+        )
+    );
+    
 Product Feed Generation
 --------------------------------
 
-The Bazaarvoice product feed constsists of your products and their associated categories. It facilities the mapping of reviews and dimensions toe the appropriate products and categories.
+The Bazaarvoice product feed constsists of your products and their associated categories. It facilities the mapping of reviews and dimensions to the appropriate products and categories.
 
 Controller
 
