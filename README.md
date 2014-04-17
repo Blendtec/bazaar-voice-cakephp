@@ -74,6 +74,8 @@ Just call it with the `$productId` same as above e.g.
         )
     );
 
+NOTE: This feature requires the PHP bvseosdk.php provided by BazaarVoice at [https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php](https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php). This file is included in the *Vendor* directory. If this file is out of date please report an issue to us on Github, or fix it yourself and do a pull request.
+
 Inline Ratings Integration
 --------------------------------
 BazaarVoice requires that you use a container to initialize a place for the ratings to reside. The default container is:
@@ -195,5 +197,40 @@ Model
         return compact('feed', 'brands', 'products', 'categories');
     }
 
+ROI Beacon - Order Confirmation
+-----------------------------------
 
-NOTE: This feature requires the PHP bvseosdk.php provided by BazaarVoice at [https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php](https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php). This file is included in the *Vendor* directory. If this file is out of date please report an issue to us on Github, fix it yourself and do a pull request.
+An `roi-beacon-order` element has been provided to ease implementing the ROI beacon on your Order Confirmation page. You must prep the data and then pass it to the element. Remember:
+
+- product id/sku must match the external product id that you provided in the product feed
+- Category should be the same category name that you provided in the feed as well.
+- Order id/number should be the same one you send in your order confirmation emails.
+
+Example:
+(items should be dynamic instead of static, but that's just for the sake of example.)
+
+    echo $this->element(
+        'BazaarVoice.roi-beacon-order',
+        array(
+            'order' => array(
+                'id' => $order['Order']['id'],
+                'tax' => $order['Order']['tax'],
+                'shipping' => $order['Order']['shipping'],
+                'total' => $order['Order']['total'],
+                'city' => $order['Order']['shipping_city'],
+                'state' => $order['Order']['shipping_state'],
+                'country' => $order['Order']['shipping_country'],
+                'currency' => 'USD',
+                'items' => array(
+                    'sku' => $order['OrderItem'][0]['Product']['external_id'],
+                    'name' => $order['OrderItem'][0]['Product']['name'],
+                    'category' => $order['OrderItem'][0]['Product']['Category']['name'],
+                    'price' => $order['OrderItem'][0]['price'],
+                    'quantity' => $order['OrderItem'][0]['quantity']
+                ),
+                'email' => $order['Order']['email'],
+                'first_name' => $order['Order']['shipping_first_name'],
+                'last_name' => $order['Order']['shipping_last_name']
+            )
+        )
+    );
