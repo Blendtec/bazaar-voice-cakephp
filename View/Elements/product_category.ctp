@@ -1,7 +1,7 @@
 <?php
 /* product category
  *
- * @param mixed $productId This is your product id to pass to BazaarVoice API. This must match your product feed's ExternalId.
+ * @param mixed $productArray, this is an array of product IDs from a product category
  */
 echo $this->element('BazaarVoice.load_script');
 ?>
