@@ -117,6 +117,7 @@ Model
                     'image_url' => 'http://blendtec.com/blenders.jpg',
                     'upc' => '000000000000',
                     'model_number' => '123456',
+                    'brand_external_id' => 'blendtec'
                 )
             ),
             (int)1 => array (
@@ -129,6 +130,7 @@ Model
                     'image_url' => 'http://blendtec.com/jars.jpg',
                     'upc' => '000000000000',
                     'model_number' => '123457',
+                    'brand_external_id' => 'blendtec'
                 )
             ),
             (int)2 => array (
@@ -141,6 +143,7 @@ Model
                     'image_url' => 'http://blendtec.com/mixers.jpg',
                     'upc' => '000000000000',
                     'model_number' => '123457',
+                    'brand_external_id' => 'blendtec'
                 )
             ),
         );

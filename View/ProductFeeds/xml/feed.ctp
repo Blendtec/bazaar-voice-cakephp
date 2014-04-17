@@ -35,7 +35,7 @@
 			<ModelNumbers>
 				<ModelNumber><?php echo $product['Product']['model_number']; ?></ModelNumber>
 			</ModelNumbers>
-			<BrandExternalId><?php echo $brand['Brand']['external_id']; ?></BrandExternalId>
+			<BrandExternalId><?php echo $product['Product']['brand_external_id']; ?></BrandExternalId>
 		</Product>
 	<?php endforeach; ?>
 	</Products>
