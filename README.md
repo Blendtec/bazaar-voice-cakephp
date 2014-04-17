@@ -76,7 +76,15 @@ Just call it with the `$productId` same as above e.g.
 
 Inline Ratings Integration
 --------------------------------
-A product_category element has been provided to load the script and add ratings to products within a category page. You can use this by passing in an array of product IDs that match the IDs for products with BazaarVoice. 
+BazaarVoice requires that you use a container to initialize a place for the ratings to reside. The default container is:
+
+     <div id="BVRRInlineRating"></div>
+
+However, to associate and rating with a specific product, that product will need an ID associated with BazaarVoice. So within a category page, for each product you will need to reference each ID within the inline ratings container ID. An example would be:
+
+    `<div id="BVRRInlineRating-<?php echo $product['id']; ?>">`
+
+Along with the IDs being unique to the products containers, you will need to register each product ID within BazaarVoice. You can do this by passing each ID to an array, then passing it to BazaarVoice. A product_category element has been provided to load the script and add ratings to products within a category page. 
 
 Once you have an array of product IDs you can pass it to the plugin element like so:
 
