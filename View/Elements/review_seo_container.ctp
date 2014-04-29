@@ -17,6 +17,6 @@
 		)
 	);
 
-	$BVR->reviews->renderSeo();
+	echo $BVR->reviews->renderSeo();
 	?>
 </div>
