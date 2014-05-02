@@ -76,6 +76,12 @@ Just call it with the `$productId` same as above e.g.
 
 NOTE: This feature requires the PHP bvseosdk.php provided by BazaarVoice at [https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php](https://github.com/bazaarvoice/HostedUIResources/blob/master/SEOIntegration/examples/php/bvseosdk.php). This file is included in the *Vendor* directory. If this file is out of date please report an issue to us on Github, or fix it yourself and do a pull request.
 
+Product Questions and Answers SEO integration
+---------------------------------------------------------------
+
+Use this exactly like the Product Review SEO Integration. Please read that Section above. The same configuration is required. The element is `questions_seo_container`.  Again this provides the div for you: `<div id="BVQAContainer"></div>`.
+
+
 Inline Ratings Integration
 --------------------------------
 BazaarVoice requires that you use a container to initialize a place for the ratings to reside. The default container is:
