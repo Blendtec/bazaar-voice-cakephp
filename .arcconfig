@@ -1,5 +1,9 @@
 {
   "project_id" : "bazaar-voice",
   "conduit_uri" : "http://dev.blendtec.com",
-  "arc.land.onto.default" : "develop"
+  "arc.land.onto.default" : "develop",
+  "lint.engine" : "ArcanistConfigurationDrivenLintEngine",
+  "lint.phpcs.standard" : "CakePHP",
+  "lint.engine.single.linter" : "ArcanistPhpcsLinter",
+  "lint.engine.standard" : "PEAR"
 }

@@ -1,0 +1,25 @@
+{
+  "debug" : false,
+  "linters" : {
+    "spelling" : {
+      "type" : "spelling",
+      "include" : "(.*)"
+    },
+    "csslint" : {
+      "type" : "csslint",
+      "include" : "(\\.css$)"
+    },
+    "jslint" : {
+      "type" : "jshint",
+      "include" : "(\\.js$)"
+    },
+    "filename" : {
+      "type" : "filename",
+      "include" : "(.*)"
+    },
+    "generated" : {
+      "type" : "generated",
+      "include" : "(.*)"
+    }
+  }
+}
