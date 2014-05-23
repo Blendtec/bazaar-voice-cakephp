@@ -1,5 +1,4 @@
 {
-  "debug" : false,
   "linters" : {
     "spelling" : {
       "type" : "spelling",
@@ -20,6 +19,10 @@
     "generated" : {
       "type" : "generated",
       "include" : "(.*)"
+    },
+    "phplint" : {
+      "type" : "phpcs",
+      "include" : "(\\.php|\\.ctp$)"
     }
   }
 }

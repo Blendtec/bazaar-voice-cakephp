@@ -240,3 +240,25 @@ Example:
             )
         )
     );
+
+PIE XML Feed Converter
+----------------------------
+
+The PIE XML Feed converter is meant to be used for historical order data not a live feed, and accepts a CSV file as input and outputs the XML Feed that Bazaar Voice expects. It is a console shell: `PIEFeed`. Run it so:
+
+    cake BazaarVoice.PIEFeed <input file> <output file>
+
+It expects the CSV file to have these fields:
+
+ * order_number **(required)**
+ * order_date **(required)**
+ * email **(required)**
+ * locale (optional)
+ * user_name (optional)
+ * user_id (optional)
+ * product\_external\_id **(required)**
+ * product_name (optional)
+ * product\_image\_url (optional)
+ * product_price (optional)
+
+`order_number` doesn't show in the actual feed, but the importer needs some id to tie orders together, because it expects a separate entry in the csv for each item ordered.
