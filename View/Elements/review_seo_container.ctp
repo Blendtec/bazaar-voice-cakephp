@@ -6,7 +6,7 @@
 ?>
 <div id="BVRRContainer">
 	<?php
-	require_once(CakePlugin::path('BazaarVoice') . DS . 'Vendor' . DS . 'bvseosdk.php');
+	require_once CakePlugin::path('BazaarVoice') . DS . 'Vendor' . DS . 'bvseosdk.php';
 
 	$BVR = new BV(
 		array(
@@ -14,6 +14,7 @@
 			'product_id' => $productId,
 			'cloud_key' => Configure::read('BazaarVoice.cloud_key'),
 			'staging' => Configure::read('BazaarVoice.staging'),
+			'bot_detection' => Configure::read('BazaarVoice.seo_bot_detection')
 		)
 	);
 
